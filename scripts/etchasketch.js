@@ -28,10 +28,14 @@
 // Create container div
 const container = document.createElement("div");
 container.id = "container";
-container.style.width = "80%";
-container.style.height = "80%";
+// container.style.maxWidth = ;
+// container.style.maxHeight = ;
+container.style.margin = "2rem";
 container.style.border = "1px solid black";
-container.style.display = "block";
+container.style.display = "inline-block";
+container.style.position = "absolute";
+container.style.left = "25px";
+container.style.top = "25px";
 document.body.appendChild(container);
 
 /* Pick size of grid */
@@ -70,17 +74,23 @@ function createGameBoard() {
 
   for (let row = 0; row < currentDivCount; row++) {
     const currentRow = document.createElement("div");
-    currentRow.id = `${row}`;
+    currentRow.id = `row-${row}`;
+    currentRow.className = "row";
+    currentRow.maxHeight = container.style.height / currentDivCount;
+    currentRow.maxWidth = container.style.width / currentDivCount;
     for (let column = 0; column < currentDivCount; column++) {
-      const currentCell = document.createElement("div");
+      const currentCell = document.createElement("span");
       currentCell.style.backgroundColor = "#ccc";
-      currentCell.id = `${row} + ${column}`;
-      currentCell.textContent = "foo";
+      currentCell.style.border = "1px solid #ddd";
+      currentCell.id = `${currentRow.id}-${column}`;
       currentCell.className = "cell";
       currentCell.style.display = "Block";
-      // currentCell.style.minWidth = `${100 / currentDivCount}%`;
-      // currentCell.style.minHeight = `${100 / currentDivCount}%`;
-      currentRow.appendChild(currentCell);
+      currentCell.addEventListener("mouseover", setCellColor);
+      currentCell.style.maxWidth = `${100 / currentDivCount}%`;
+      currentCell.style.maxHeight = `${100 / currentDivCount}%`;
+      currentCell.textContent = "&nbsp";
+      currentCell.style.color = "transparent";
+      currentRow.append(currentCell);
     }
     container.appendChild(currentRow);
   }
@@ -92,7 +102,16 @@ function createGameBoard() {
 //
 // Starting color is black #000 //
 const initialPenColor = "#000";
+const currentPenColor = initialPenColor;
 
+function setCellColor(e) {
+  let cell = document.getElementById(e.target.id);
+  cell.style.backgroundColor = currentPenColor;
+}
+
+/* May use this later - for now it's crufty */
+//
+//
 // colorPick = document.createElement("div");
 // colorPick.id = "picker";
 // const colorPicker = new iro.ColorPicker("#picker", {
