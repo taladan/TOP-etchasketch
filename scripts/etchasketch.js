@@ -26,11 +26,14 @@
 // Instead of just changing the color of a square from black to white (for example), have each pass through with the mouse change it to a completely random RGB value. Then try having each pass just add another 10% of black to it so that only after 10 passes is the square completely black.
 
 // Create container div
+
+const title = document.querySelector("h1");
+const frame = document.getElementById("frame");
+
 const container = document.createElement("div");
 container.id = "container";
 container.style.margin = "0 auto";
 container.style.padding = "0";
-// container.style.border = "1px solid black";
 container.style.display = "inline-block";
 container.style.left = "25px";
 container.style.top = "25px";
@@ -46,9 +49,10 @@ let currentDivCount = initialDivCount;
 
 // create div count selector
 const divCountSlider = document.createElement("input");
+divCountSlider.id = "sizer";
 divCountSlider.type = "range";
 divCountSlider.setAttribute("min", initialDivCount);
-divCountSlider.setAttribute("max", initialDivCount * 6);
+divCountSlider.setAttribute("max", initialDivCount * 4);
 divCountSlider.setAttribute("value", initialDivCount);
 divCountSlider.setAttribute("step", initialDivCount);
 
@@ -102,7 +106,7 @@ function createGameBoard() {
       parseInt(container.style.height) / parseInt(currentDivCount)
     )}px)`;
     // console.log(container.style.transform);
-    document.body.appendChild(container);
+    frame.appendChild(container);
   }
 }
 
