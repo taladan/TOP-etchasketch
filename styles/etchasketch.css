@@ -21,6 +21,8 @@ body {
   border: solid 3rem #eb0f0e;
   border-radius: 2rem;
   border-bottom: solid 5rem #eb0f0e;
+  box-shadow: 10px 10px  rgba(95, 76, 52, 0.4), inset 2px 3px #2d2727a9;
+  outline: solid 2px rgb(41, 41, 21);
   background-color: #816363;
   display: flex;
   justify-content: space-evenly; */
