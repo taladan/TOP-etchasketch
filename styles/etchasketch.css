@@ -1,22 +1,56 @@
 body {
   display: flex;
+  flex-direction: column;
+  color: rgb(158, 122, 32);
+  /* color: rgb(64, 56, 35); */
+  /* text-shadow: 4px 3px rgba(0, 0, 0, 0.394); */
   background-color: #9f9d9a;
   justify-content: space-between;
-  padding-left: 30rem;
+  padding-left: 10rem;
   padding-right: 30rem;
 }
 
+input{
+  margin-top: 20px;
+}
+
+button{
+  color: rgb(0,0,0); 
+  background: linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 154, 0, 1) 10%,
+        rgba(208, 222, 33, 1) 20%,
+        rgba(79, 220, 74, 1) 30%,
+        rgba(63, 218, 216, 1) 40%,
+        rgba(47, 201, 226, 1) 50%,
+        rgba(28, 127, 238, 1) 60%,
+        rgba(95, 21, 242, 1) 70%,
+        rgba(186, 12, 248, 1) 80%,
+        rgba(251, 7, 217, 1) 90%,
+        rgba(255, 0, 0, 1) 100%
+    );
+  border-radius: 1rem;
+  font-size: 1rem;
+  align-self: center;
+  padding: 1rem;
+}
 #title {
   font-family: 'Freehand', cursive;
   font-size: 3rem;
+  font-weight: 100;
   display: flex;
   flex-direction:column;
   padding-bottom: 1rem;
-  margin-bottom: 1rem;
+  padding-right: 0;
+  margin-bottom: 0;
   justify-content: center;
   align-items: center;
-  color: rgb(158, 122, 32);
+  background-color: rgb(79,49,48);
+  border-top-right-radius: 2em;
+  border-top-left-radius: 2em;
 }
+
 #frame {
   border: solid 3rem #eb0f0e;
   border-radius: 2rem;
@@ -26,27 +60,34 @@ body {
   background-color: #816363;
   display: flex;
   justify-content: space-evenly; */
-  min-width: 40rem;
   margin-top: 5rem;
-  margin-left: 10 rem;
-  margin-right: 10 rem;
   padding: 3rem;
   align-items: center;
 }
 
-#picker {
-  margin-bottom: 2rem;
-}
-#container {
+
+#game {
+  display: flex;
 }
 
 #tools {
+  margin-right: 10%;
+  padding-right: 5%;
+  padding-left: 5%;
+  margin-top: 0;
+  color: rgb(239,239,208);
+  background-color: rgb(79,49,48);
+  border-bottom-left-radius: 2em;
+  border-bottom-right-radius: 2em;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  flex-shrink: 0;
-  align-items: center;
-  margin-right: 10rem;
+  justify-content: space-evenly;
+  align-items: flex-end;
+}
+
+#picker {
+  flex: true;
+  margin-bottom: 2rem;
 }
 
 .row {
