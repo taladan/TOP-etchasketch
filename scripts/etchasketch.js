@@ -28,17 +28,13 @@
 // Create container div
 const container = document.createElement("div");
 container.id = "container";
-// container.style.maxWidth = ;
-// container.style.maxHeight = ;
-container.style.margin = "2rem";
-container.style.border = "1px solid black";
+container.style.margin = "0 auto";
+container.style.padding = "0";
+// container.style.border = "1px solid black";
 container.style.display = "inline-block";
-container.style.position = "absolute";
 container.style.left = "25px";
 container.style.top = "25px";
 container.style.resize = "none";
-container.style.width = "600px";
-container.style.height = "600px";
 
 /* Pick size of grid */
 //
@@ -52,12 +48,13 @@ let currentDivCount = initialDivCount;
 const divCountSlider = document.createElement("input");
 divCountSlider.type = "range";
 divCountSlider.setAttribute("min", initialDivCount);
-divCountSlider.setAttribute("max", initialDivCount * 10);
+divCountSlider.setAttribute("max", initialDivCount * 6);
 divCountSlider.setAttribute("value", initialDivCount);
 divCountSlider.setAttribute("step", initialDivCount);
 
 // Place count selector in page
-document.body.appendChild(divCountSlider);
+const tools = document.getElementById("tools");
+tools.appendChild(divCountSlider);
 divCountSlider.addEventListener("mouseup", getSliderValue);
 
 // Track currentDivCount
@@ -91,8 +88,8 @@ function createGameBoard() {
       currentCell.className = "cell";
       currentCell.style.display = "Block";
       currentCell.addEventListener("mouseover", setCellColor);
-      currentCell.style.maxWidth = `${containerWidth / divCount}px`;
-      currentCell.style.maxHeight = `${containerHeight / divCount}px`;
+      currentCell.style.maxWidth = "6px";
+      currentCell.style.maxHeight = "6px";
       currentCell.textContent = "&nbsp";
       currentCell.style.color = "transparent";
       currentCell.style.userSelect = "none";
@@ -115,7 +112,7 @@ function createGameBoard() {
 //
 // Starting color is black #000 //
 const initialPenColor = "#000";
-const currentPenColor = initialPenColor;
+let currentPenColor = initialPenColor;
 
 function setCellColor(e) {
   let cell = document.getElementById(e.target.id);
@@ -125,13 +122,17 @@ function setCellColor(e) {
 /* May use this later - for now it's crufty */
 //
 //
-// colorPick = document.createElement("div");
-// colorPick.id = "picker";
-// const colorPicker = new iro.ColorPicker("#picker", {
-//   width: 320,
-//   color: initialPenColor,
-// });
-// colorPick.appendChild(colorPicker);
-// document.body.appendChild(colorPick);
+const colorPicker = new iro.ColorPicker("#picker", {
+  width: 150,
+  color: currentPenColor,
+});
+const picker = document.getElementById("picker");
+picker.addEventListener("mouseleave", setPen);
 
 // create color selector
+function setPen() {
+  console.log("Setting color!");
+  currentPenColor = colorPicker.color.hexString;
+}
+/* Create the gameboard for inital page view after pageload */
+createGameBoard();

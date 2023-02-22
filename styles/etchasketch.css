@@ -1,4 +1,23 @@
+body {
+  display: flex;
+  background-color: #eb0f0e;
+  justify-content: space-between;
+  padding-left: 30rem;
+  padding-right: 30rem;
+  padding-bottom: 30rem;
+  padding-top: 10rem;
+}
+
 #container {
+  /* padding-top: 5em; */
+  /* flex: none; */
+}
+
+#tools {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .row {
