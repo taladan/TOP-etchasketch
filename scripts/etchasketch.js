@@ -36,7 +36,9 @@ container.style.display = "inline-block";
 container.style.position = "absolute";
 container.style.left = "25px";
 container.style.top = "25px";
-document.body.appendChild(container);
+container.style.resize = "none";
+container.style.width = "600px";
+container.style.height = "600px";
 
 /* Pick size of grid */
 //
@@ -71,6 +73,9 @@ function getSliderValue(e) {
 function createGameBoard() {
   // clear the board first
   container.replaceChildren();
+  const containerWidth = parseInt(container.style.width);
+  const containerHeight = parseInt(container.style.height);
+  const divCount = parseInt(currentDivCount);
 
   for (let row = 0; row < currentDivCount; row++) {
     const currentRow = document.createElement("div");
@@ -86,13 +91,21 @@ function createGameBoard() {
       currentCell.className = "cell";
       currentCell.style.display = "Block";
       currentCell.addEventListener("mouseover", setCellColor);
-      currentCell.style.maxWidth = `${100 / currentDivCount}%`;
-      currentCell.style.maxHeight = `${100 / currentDivCount}%`;
+      currentCell.style.maxWidth = `${containerWidth / divCount}px`;
+      currentCell.style.maxHeight = `${containerHeight / divCount}px`;
       currentCell.textContent = "&nbsp";
       currentCell.style.color = "transparent";
+      currentCell.style.userSelect = "none";
       currentRow.append(currentCell);
     }
     container.appendChild(currentRow);
+    container.style.transform = `translate(${Math.floor(
+      parseInt(container.style.width) / parseInt(currentDivCount)
+    )}px, ${Math.floor(
+      parseInt(container.style.height) / parseInt(currentDivCount)
+    )}px)`;
+    // console.log(container.style.transform);
+    document.body.appendChild(container);
   }
 }
 
